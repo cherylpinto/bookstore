@@ -1,9 +1,14 @@
 import React from 'react'
+import Banner from '../components/Banner'
+import FavouriteBooks from './FavouriteBooks'
+import FavBook from './FavBook'
 
 const Home = () => {
   return (
     <div>
-      Home
+      <Banner/>
+      <FavouriteBooks/>
+      <FavBook/>
     </div>
   )
 }

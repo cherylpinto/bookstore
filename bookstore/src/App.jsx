@@ -6,6 +6,7 @@ import Shop from './shop/shop';
 import About from './components/About';
 import Blog from './components/Blog';
 import Navbar from './components/Navbar';
+import SingleBookData from './shop/SingleBookData';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/book/:id" element={<SingleBookData/>} />
         </Routes>
     </Router>
     </>
