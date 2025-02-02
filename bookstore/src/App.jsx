@@ -13,6 +13,10 @@ import Dashboard from "./Dashboard/Dashboard";
 import Upload from "./Dashboard/Upload";
 import ManageBook from "./Dashboard/ManageBook";
 import EditBooks from "./Dashboard/EditBooks";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -31,14 +35,27 @@ function MainContent() {
       {!hideNavbar && <Navbar />}
       <div className="min-h-screen">
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/book/:id" element={<SingleBookData />} />
-          {/* Nested admin routes */}
-          <Route path="/admin/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout/>}/>
+
+          {/* Protected Admin Routes */}
+          <Route
+            path="/admin/dashboard/*"
+            element={
+                <DashboardLayout />  
+            }
+          >
+            <Route index element={<PrivateRoute>
+              <Dashboard />
+              </PrivateRoute>
+              } />
             <Route path="upload" element={<Upload />} />
             <Route path="manage" element={<ManageBook />} />
             <Route path="edit-books/:id" element={<EditBooks />} />

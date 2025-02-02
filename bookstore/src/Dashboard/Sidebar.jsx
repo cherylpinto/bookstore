@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import userImg from "../assets/profile.jpg"
 import { HiOutlineCloudUpload } from "react-icons/hi";
 import { ImBooks } from "react-icons/im"
+import { AuthContext } from "../Auth/AuthProvider";
 
 const Sidebar = () => {
+  const {user}=useContext(AuthContext);
   return (
     <div className="flex">
       <div className="">
@@ -36,9 +38,9 @@ const Sidebar = () => {
         aria-label="Sidebar"
       >
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <div className="flex">
-            <img src={userImg} className="h-10 w-10 mb-4"></img>
-            <p className="mx-4 my-2">Username</p>
+            <div className="flex mt-7 mb-2 items-center">
+            <img src={userImg} className="h-14 w-14 mb-4 rounded-full"></img>
+            <p className="mx-4 mb-3 font-bold text-lg ms-3">{user?.displayName}</p>
             </div>
           <ul class="space-y-2 font-medium">
             <li>
